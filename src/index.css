@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-bg-dark: #050505;
+  --color-neon-pink: #ff006e;
+  --color-neon-pink-hover: #e0005a;
+  
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  
+  --shadow-neon-sm: 0 0 10px rgba(255, 0, 110, 0.2);
+  --shadow-neon-md: 0 0 20px rgba(255, 0, 110, 0.4);
+  --shadow-neon-lg: 0 0 35px rgba(255, 0, 110, 0.6);
+}
+
+/* Custom CSS Base and Utilities */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #050505;
+    color: #ffffff;
+    font-family: var(--font-sans);
+  }
+
+  body {
+    background-color: #050505;
+    overflow-x: hidden;
+  }
+
+  /* Custom scrollbar for premium dark theme */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #050505;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1a1a1a;
+    border-radius: 4px;
+    border: 2px solid #050505;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ff006e;
+  }
+}
+
+@layer utilities {
+  .bg-glass {
+    background-color: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  
+  .bg-glass-strong {
+    background-color: rgba(5, 5, 5, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .border-glass {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .border-glass-pink {
+    border: 1px solid rgba(255, 0, 110, 0.3);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 10px rgba(255, 0, 110, 0.5);
+  }
+
+  .text-glow-strong {
+    text-shadow: 0 0 15px rgba(255, 0, 110, 0.8), 0 0 30px rgba(255, 0, 110, 0.4);
+  }
+
+  .mask-radial {
+    mask-image: radial-gradient(circle, black, transparent 80%);
+  }
+}
+
+/* Glassmorphism card premium hover effect */
+.glass-card-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-card-hover:hover {
+  transform: translateY(-5px);
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 0, 110, 0.4);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7), 0 0 20px -5px rgba(255, 0, 110, 0.15);
+}
+
+/* Shimmer animation for premium skeleton loads */
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+.animate-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.animate-shimmer::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.03) 20%,
+    rgba(255, 255, 255, 0.08) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmer 2s infinite;
+  content: '';
+}
+
+/* Custom glow spots */
+.glow-spot-pink {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255, 0, 110, 0.12) 0%, transparent 70%);
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 0;
+}

@@ -1,0 +1,110 @@
+import { useState } from 'react';
+
+export default function Footer({ scrollToSection }) {
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [newsletterStatus, setNewsletterStatus] = useState(null); // 'success' | 'error'
+
+  const handleNewsletterSubmit = (e) => {
+    e.preventDefault();
+    if (!newsletterEmail || !newsletterEmail.includes('@')) {
+      setNewsletterStatus('error');
+      return;
+    }
+    setNewsletterStatus('success');
+    setNewsletterEmail('');
+    setTimeout(() => setNewsletterStatus(null), 4000);
+  };
+
+  return (
+    <footer id="contact" className="border-t border-glass bg-bg-dark pt-20 pb-10 relative">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-16 border-b border-glass">
+          
+          {/* Column 1 - Brand Info */}
+          <div>
+            <span className="text-xl font-black tracking-tighter uppercase text-white mb-6 block">
+              Auto<span className="text-neon-pink">Deal</span>
+            </span>
+            <p className="text-xs text-white/60 leading-relaxed mb-6">
+              Votre courtier automobile de confiance en Algérie. Importations de véhicules neufs et occasions récents certifiés depuis l'Europe et l'Asie.
+            </p>
+            <div className="flex space-x-3">
+              <a href="#instagram" className="w-8 h-8 rounded-lg bg-white/5 border border-glass flex items-center justify-center text-white/80 hover:border-neon-pink hover:text-neon-pink transition-colors">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              </a>
+              <a href="#facebook" className="w-8 h-8 rounded-lg bg-white/5 border border-glass flex items-center justify-center text-white/80 hover:border-neon-pink hover:text-neon-pink transition-colors">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8H7v3h2v9h3v-9h3.625L18 8h-3V6.375C15 5.625 15.625 5 16.375 5H18V2h-3c-2.76 0-5 2.24-5 5V8z"/></svg>
+              </a>
+            </div>
+          </div>
+
+          {/* Column 2 - Links */}
+          <div>
+            <h3 className="text-xs font-bold uppercase tracking-wider text-neon-pink mb-6">Liens Rapides</h3>
+            <ul className="space-y-3.5 text-xs text-white/70">
+              <li><button onClick={() => scrollToSection('home')} className="hover:text-white transition-colors cursor-pointer">Accueil</button></li>
+              <li><button onClick={() => scrollToSection('marketplace')} className="hover:text-white transition-colors cursor-pointer">Catalogue Véhicules</button></li>
+              <li><button onClick={() => scrollToSection('import-process')} className="hover:text-white transition-colors cursor-pointer">Guide d'Importation</button></li>
+              <li><button onClick={() => scrollToSection('services')} className="hover:text-white transition-colors cursor-pointer">Nos Services Atelier</button></li>
+              <li><button onClick={() => scrollToSection('estimation')} className="hover:text-white transition-colors cursor-pointer">Estimer mon Véhicule</button></li>
+            </ul>
+          </div>
+
+          {/* Column 3 - Contact details */}
+          <div>
+            <h3 className="text-xs font-bold uppercase tracking-wider text-neon-pink mb-6">Contact</h3>
+            <ul className="space-y-4 text-xs text-white/70">
+              <li className="flex items-start space-x-2.5">
+                <svg className="w-4 h-4 text-neon-pink shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                <span>12 Boulevard du 11 Novembre, Hydra, Alger, Algérie</span>
+              </li>
+              <li className="flex items-center space-x-2.5">
+                <svg className="w-4 h-4 text-neon-pink shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                <span>+213 (0) 550 12 34 56</span>
+              </li>
+              <li className="flex items-center space-x-2.5">
+                <svg className="w-4 h-4 text-neon-pink shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                <span>contact@autodeal-dz.com</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 4 - Newsletter */}
+          <div>
+            <h3 className="text-xs font-bold uppercase tracking-wider text-neon-pink mb-6">Newsletter</h3>
+            <p className="text-xs text-white/60 leading-relaxed mb-4">Abonnez-vous pour recevoir les nouveaux arrivages et les cotes d'importation.</p>
+            
+            <form onSubmit={handleNewsletterSubmit} className="space-y-2.5">
+              <input
+                type="email"
+                placeholder="Votre adresse e-mail"
+                value={newsletterEmail}
+                onChange={(e) => setNewsletterEmail(e.target.value)}
+                className="w-full px-3.5 py-2.5 text-xs rounded-lg border border-glass bg-black/45 focus:outline-none focus:border-neon-pink text-white"
+              />
+              <button
+                type="submit"
+                className="w-full py-2.5 bg-white text-black hover:bg-neon-pink hover:text-white transition-all duration-300 font-bold text-xs uppercase tracking-wider rounded-lg active:scale-95 cursor-pointer"
+              >
+                S'abonner
+              </button>
+            </form>
+
+            {newsletterStatus === 'success' && (
+              <p className="text-xs text-green-400 font-bold mt-2">✓ Inscription réussie !</p>
+            )}
+            {newsletterStatus === 'error' && (
+              <p className="text-xs text-neon-pink font-bold mt-2">✗ Adresse e-mail invalide.</p>
+            )}
+          </div>
+
+        </div>
+
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-2xs text-white/40">
+          <p>© {new Date().getFullYear()} AutoDeal. Tous droits réservés.</p>
+          <p className="mt-2 sm:mt-0">Fait avec passion pour l'automobile d'exception.</p>
+        </div>
+      </div>
+    </footer>
+  );
+}
