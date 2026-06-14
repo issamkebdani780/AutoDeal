@@ -1,4 +1,4 @@
-import VehicleCard from './VehicleCard'
+import VehicleCardCompact from './VehicleCardCompact'
 
 export default function Marketplace({
   searchQuery,
@@ -135,7 +135,7 @@ export default function Marketplace({
             {filteredVehicles.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredVehicles.map(car => (
-                  <VehicleCard
+                  <VehicleCardCompact
                     key={car.id}
                     car={car}
                     favorites={favorites}

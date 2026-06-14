@@ -89,18 +89,18 @@ export default function VehicleCard({ car, favorites, toggleFavorite, setSelecte
           </span>
         </div>
 
-        <div className="grid grid-cols-3 gap-2 py-4 my-3 border-y border-white/5 text-xs text-white/60">
-          <div className="flex items-center space-x-1.5">
+        <div className="grid grid-cols-3 gap-1 xs:gap-2 py-4 my-3 border-y border-white/5 text-[10px] xs:text-xs text-white/60">
+          <div className="flex items-center space-x-1 xs:space-x-1.5">
             <svg className="w-3.5 h-3.5 text-neon-pink shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="m12 14 4-4-4-4M6 20h12v-2H6v2ZM8 12V4h8v8"/></svg>
             <span>{car.mileage.toLocaleString()} km</span>
           </div>
-          <div className="flex items-center space-x-1.5">
+          <div className="flex items-center space-x-1 xs:space-x-1.5">
             <svg className="w-3.5 h-3.5 text-neon-pink shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
             <span>{car.fuel}</span>
           </div>
-          <div className="flex items-center space-x-1.5">
+          <div className="flex items-center space-x-1 xs:space-x-1.5">
             <svg className="w-3.5 h-3.5 text-neon-pink shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M20 16V8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2ZM4 12h16"/></svg>
-            <span>{car.transmission}</span>
+            <span className="truncate">{car.transmission}</span>
           </div>
         </div>
 

@@ -29,32 +29,50 @@ export default function Testimonials({ testimonials, testimonialIndex, setTestim
             <p className="text-2xs uppercase tracking-wider text-neon-pink mt-1">{testimonials[testimonialIndex].role}</p>
           </div>
 
-          {/* Nav controls */}
+          {/* Nav controls (Desktop) */}
           <button
             onClick={() => setTestimonialIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
-            className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full border border-glass bg-black/50 text-white/70 hover:border-neon-pink hover:text-white cursor-pointer"
+            className="hidden sm:block absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full border border-glass bg-black/50 text-white/70 hover:border-neon-pink hover:text-white cursor-pointer"
             aria-label="Previous testimonial"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="m15 19-7-7 7-7"/></svg>
           </button>
           <button
             onClick={() => setTestimonialIndex((prev) => (prev + 1) % testimonials.length)}
-            className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full border border-glass bg-black/50 text-white/70 hover:border-neon-pink hover:text-white cursor-pointer"
+            className="hidden sm:block absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full border border-glass bg-black/50 text-white/70 hover:border-neon-pink hover:text-white cursor-pointer"
             aria-label="Next testimonial"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg>
           </button>
 
-          {/* Carousel Pagination */}
-          <div className="flex justify-center space-x-2 mt-8">
-            {testimonials.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setTestimonialIndex(i)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 cursor-pointer ${i === testimonialIndex ? 'bg-neon-pink w-6' : 'bg-white/20'}`}
-                aria-label={`Go to slide ${i + 1}`}
-              />
-            ))}
+          {/* Carousel Pagination & Mobile Controls */}
+          <div className="flex justify-center items-center space-x-4 mt-8">
+            <button
+              onClick={() => setTestimonialIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
+              className="sm:hidden p-2 rounded-full border border-glass bg-black/50 text-white/70 hover:border-neon-pink hover:text-white cursor-pointer"
+              aria-label="Previous testimonial"
+            >
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="m15 19-7-7 7-7"/></svg>
+            </button>
+
+            <div className="flex space-x-2">
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setTestimonialIndex(i)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 cursor-pointer ${i === testimonialIndex ? 'bg-neon-pink w-6' : 'bg-white/20'}`}
+                  aria-label={`Go to slide ${i + 1}`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={() => setTestimonialIndex((prev) => (prev + 1) % testimonials.length)}
+              className="sm:hidden p-2 rounded-full border border-glass bg-black/50 text-white/70 hover:border-neon-pink hover:text-white cursor-pointer"
+              aria-label="Next testimonial"
+            >
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg>
+            </button>
           </div>
         </div>
       </div>

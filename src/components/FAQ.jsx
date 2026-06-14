@@ -27,7 +27,7 @@ export default function FAQ({ faqData, activeFaqIndex, setActiveFaqIndex }) {
                   </span>
                 </button>
 
-                <div className={`transition-all duration-300 ${isOpen ? 'max-h-60 border-t border-white/5' : 'max-h-0'} overflow-hidden`}>
+                <div className={`transition-all duration-300 ${isOpen ? 'max-h-[500px] border-t border-white/5' : 'max-h-0'} overflow-hidden`}>
                   <p className="p-6 text-xs sm:text-sm text-white/60 leading-relaxed bg-black/20">
                     {faq.answer}
                   </p>

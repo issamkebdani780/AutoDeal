@@ -26,7 +26,7 @@ export default function VehicleDetailModal({ selectedVehicle, setSelectedVehicle
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md transition-opacity">
-      <div className="relative w-full max-w-4xl border border-glass bg-glass-strong rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[90vh] md:max-h-none overflow-y-auto md:overflow-visible">
+      <div className="relative w-full max-w-4xl border border-glass bg-glass-strong rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[90vh] md:max-h-[550px] overflow-y-auto md:overflow-hidden">
         
         {/* Close Button */}
         <button
@@ -40,7 +40,7 @@ export default function VehicleDetailModal({ selectedVehicle, setSelectedVehicle
         </button>
 
         {/* Images display - Left panel */}
-        <div className="w-full md:w-1/2 relative bg-black flex items-center justify-center">
+        <div className="w-full md:w-1/2 relative bg-black flex items-center justify-center shrink-0">
           <img
             src={selectedVehicle.images[0]}
             alt={selectedVehicle.model}
@@ -57,7 +57,7 @@ export default function VehicleDetailModal({ selectedVehicle, setSelectedVehicle
         </div>
 
         {/* Specs & Contact Form - Right panel */}
-        <div className="w-full md:w-1/2 p-8 overflow-y-auto max-h-[50vh] md:max-h-[550px] border-t md:border-t-0 md:border-l border-glass flex flex-col justify-between">
+        <div className="w-full md:w-1/2 p-8 md:overflow-y-auto md:max-h-[550px] border-t md:border-t-0 md:border-l border-glass flex flex-col justify-between">
           <div>
             <h4 className="text-xs uppercase tracking-wider text-white/40 font-bold mb-4">Caractéristiques Techniques</h4>
             

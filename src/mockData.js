@@ -2,7 +2,8 @@ export const initialVehicles = [
   {
     id: 1,
     brand: "Porsche",
-    model: "911 Carrera GTS",
+    model: "911 Carrera",
+    version: "GTS Type 992",
     price: 145000,
     priceDa: "32,000,000 DA",
     year: 2023,
@@ -10,7 +11,11 @@ export const initialVehicles = [
     fuel: "Essence",
     transmission: "Automatique",
     location: "France (Importable)",
+    wilaya: "Import (Europe)",
     origin: "France",
+    condition: "Occasion",
+    badge: "Import France",
+    video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     images: ["/france_import.png", "/hero_car.png", "/bmw_final_cta.png"],
     specs: {
       power: "480 ch",
@@ -18,12 +23,15 @@ export const initialVehicles = [
       color: "Noir Intense Métallisé",
       interior: "Cuir Alcantara Noir",
       warranty: "12 Mois Porsche Approved"
-    }
+    },
+    options: ["Pack Sport Chrono", "Échappement Sport", "Jantes Turbo S 20/21 pouces", "Sièges Sport Plus", "PDLS+"],
+    history: "Première main, entretien exclusif centre Porsche, historique complet, non accidenté."
   },
   {
     id: 2,
     brand: "BYD",
-    model: "Han EV Sedan",
+    model: "Han",
+    version: "EV AWD Excellence",
     price: 52000,
     priceDa: "11,500,000 DA",
     year: 2024,
@@ -31,20 +39,27 @@ export const initialVehicles = [
     fuel: "Électrique",
     transmission: "Automatique",
     location: "Chine (Importable)",
+    wilaya: "Import (Asie)",
     origin: "Chine",
+    condition: "Neuf",
+    badge: "Import Chine",
+    video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     images: ["/china_import.png", "/hero_car.png", "/bmw_final_cta.png"],
     specs: {
       power: "517 ch",
-      engine: "Dual Motor AWD",
+      engine: "Dual Motor AWD (Blade Battery)",
       color: "Gris Empereur",
       interior: "Cuir Nappa Rouge Terre de Feu",
       warranty: "24 Mois Garantie AutoDeal"
-    }
+    },
+    options: ["Toit panoramique", "Sonorisation Dynaudio", "Affichage tête haute", "Conduite autonome Nv2", "Sièges ventilés/massants"],
+    history: "Véhicule neuf, 0km, commande directe usine."
   },
   {
     id: 3,
     brand: "Audi",
-    model: "RS6 Avant C8",
+    model: "RS6 Avant",
+    version: "C8 Performance",
     price: 128000,
     priceDa: "28,500,000 DA",
     year: 2022,
@@ -52,7 +67,11 @@ export const initialVehicles = [
     fuel: "Essence",
     transmission: "Automatique",
     location: "Alger (Disponible)",
+    wilaya: "Alger",
     origin: "Occasion Certifié",
+    condition: "Occasion",
+    badge: "Occasion Certifiée",
+    video: null,
     images: ["/certified_used.png", "/france_import.png", "/bmw_final_cta.png"],
     specs: {
       power: "600 ch",
@@ -60,12 +79,15 @@ export const initialVehicles = [
       color: "Gris Nardo",
       interior: "Cuir Valcona Noir Surpiqûres Rouges",
       warranty: "12 Mois Garantie Premium"
-    }
+    },
+    options: ["Pack Dynamique RS", "Freins Céramique", "Système Bang & Olufsen 3D", "Suspension DRC", "Vision nocturne"],
+    history: "Deuxième main, importée en 2023, carnet d'entretien à jour, contrôle technique vierge."
   },
   {
     id: 4,
     brand: "Zeekr",
-    model: "001 AWD Sport",
+    model: "001",
+    version: "AWD Sport",
     price: 64000,
     priceDa: "14,200,000 DA",
     year: 2024,
@@ -73,7 +95,11 @@ export const initialVehicles = [
     fuel: "Électrique",
     transmission: "Automatique",
     location: "Chine (Importable)",
+    wilaya: "Import (Asie)",
     origin: "Chine",
+    condition: "Neuf",
+    badge: "Import Chine",
+    video: null,
     images: ["/china_import.png", "/hero_car.png", "/bmw_final_cta.png"],
     specs: {
       power: "544 ch",
@@ -81,20 +107,27 @@ export const initialVehicles = [
       color: "Bleu Électrique",
       interior: "Alcantara & Cuir Sport",
       warranty: "24 Mois Garantie AutoDeal"
-    }
+    },
+    options: ["Suspension pneumatique", "Portes automatiques", "Yamaha Audio", "Jantes 21 pouces", "Pilot Assist"],
+    history: "Véhicule neuf stock usine."
   },
   {
     id: 5,
     brand: "Mercedes-AMG",
-    model: "GT 53 4MATIC+",
+    model: "GT",
+    version: "53 4MATIC+ 4 Portes",
     price: 155000,
     priceDa: "34,500,000 DA",
     year: 2023,
     mileage: 12000,
     fuel: "Essence",
     transmission: "Automatique",
-    location: "Alger (Disponible)",
+    location: "Oran (Disponible)",
+    wilaya: "Oran",
     origin: "Occasion Certifié",
+    condition: "Occasion",
+    badge: "Occasion Certifiée",
+    video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     images: ["/hero_car.png", "/certified_used.png", "/bmw_final_cta.png"],
     specs: {
       power: "435 ch",
@@ -102,28 +135,37 @@ export const initialVehicles = [
       color: "Gris Selenite Magno Mat",
       interior: "Cuir Nappa AMG Noir",
       warranty: "12 Mois Garantie Mercedes"
-    }
+    },
+    options: ["Pack Aérodynamique AMG", "Burmester Surround", "Volant AMG Performance", "Affichage tête haute", "Sièges multicontours actifs"],
+    history: "Première main locale, révisée chez Mercedes-Benz Algérie."
   },
   {
     id: 6,
     brand: "Volkswagen",
-    model: "Golf 8 R Line",
+    model: "Golf 8",
+    version: "2.0 TSI R 4Motion",
     price: 45000,
     priceDa: "10,200,000 DA",
     year: 2022,
     mileage: 22000,
     fuel: "Essence",
-    transmission: "Manuelle",
+    transmission: "Automatique",
     location: "France (Importable)",
+    wilaya: "Import (Europe)",
     origin: "France",
+    condition: "Occasion",
+    badge: "Import France",
+    video: null,
     images: ["/france_import.png", "/certified_used.png", "/hero_car.png"],
     specs: {
       power: "320 ch",
-      engine: "2.0L TSI 4Motion",
+      engine: "2.0L TSI",
       color: "Bleu Lapiz Métallisé",
       interior: "Tissu/Alcantara R Noir",
       warranty: "12 Mois Garantie AutoDeal"
-    }
+    },
+    options: ["Pack Performance", "Toit ouvrant panoramique", "Harman Kardon", "Jantes Estoril 19 pouces", "Matrix LED"],
+    history: "Véhicule d'occasion contrôlé, carnet VW complet."
   }
 ];
 
@@ -219,3 +261,43 @@ export const servicesDetails = {
     price: "À partir de 15 000 DA"
   }
 };
+
+export const showrooms = [
+  {
+    id: 1,
+    name: "AutoDeal Premium Alger",
+    logo: "A",
+    coverImage: "https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&q=80",
+    city: "Alger",
+    address: "Route Nationale N°5, Bab Ezzouar, Alger, Algérie",
+    phone: "+213 555 12 34 56",
+    whatsapp: "+213 555 12 34 56",
+    rating: 4.8,
+    reviewCount: 124,
+    isPremium: true,
+    inventoryCount: 45,
+    workingHours: "Dimanche - Jeudi : 09:00 - 18:00\nSamedi : 09:00 - 15:00\nVendredi : Fermé",
+    reviews: [
+      { id: 1, author: "Amine K.", rating: 5, date: "Il y a 2 semaines", content: "Super showroom, vendeurs très professionnels. J'ai acheté mon Audi RS6 chez eux, transaction impeccable." },
+      { id: 2, author: "Yasmine B.", rating: 4, date: "Il y a 1 mois", content: "Très grand choix de véhicules premium. Le service commercial est à l'écoute." }
+    ]
+  },
+  {
+    id: 2,
+    name: "Oran Motors Excellence",
+    logo: "O",
+    coverImage: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80",
+    city: "Oran",
+    address: "Boulevard Millenium, Bir El Djir, Oran, Algérie",
+    phone: "+213 555 98 76 54",
+    whatsapp: "+213 555 98 76 54",
+    rating: 4.5,
+    reviewCount: 89,
+    isPremium: false,
+    inventoryCount: 22,
+    workingHours: "Samedi - Jeudi : 09:00 - 19:00\nVendredi : Fermé",
+    reviews: [
+      { id: 1, author: "Samir T.", rating: 5, date: "Il y a 3 jours", content: "Je recommande vivement, très sérieux pour l'importation de véhicules d'Europe." }
+    ]
+  }
+];

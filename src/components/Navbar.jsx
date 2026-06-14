@@ -1,4 +1,17 @@
+import { useEffect } from 'react';
+
 export default function Navbar({ scrolled, scrollToSection, favoritesCount, mobileMenuOpen, setMobileMenuOpen }) {
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
+
   return (
     <>
       <header className={`fixed top-4 left-0 right-0 z-50 px-4 max-w-7xl mx-auto transition-all duration-300 ${scrolled ? 'transform scale-[0.98]' : ''}`}>
@@ -31,14 +44,6 @@ export default function Navbar({ scrolled, scrollToSection, favoritesCount, mobi
                 <span>{favoritesCount}</span>
               </div>
             )}
-
-            {/* Language Selector in GME style */}
-            <div className="flex items-center space-x-3.5 text-2xs font-extrabold tracking-wider mr-4 border-r border-white/10 pr-4 text-white/60">
-              <span className="bg-neon-pink text-white px-2 py-0.5 rounded font-black cursor-pointer shadow-[0_0_5px_rgba(255,0,110,0.3)]">FR</span>
-              <span className="hover:text-neon-pink cursor-pointer transition-colors uppercase">EN</span>
-              <span className="hover:text-neon-pink cursor-pointer transition-colors text-xs font-bold font-sans">عربي</span>
-            </div>
-
             <button
               onClick={() => scrollToSection('estimation')}
               className="px-6 py-2.5 text-2xs font-extrabold uppercase tracking-widest text-white bg-neon-pink rounded-full hover:bg-neon-pink-hover hover:shadow-neon-sm active:scale-95 transition-all duration-300 cursor-pointer"

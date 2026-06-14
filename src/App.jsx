@@ -1,255 +1,78 @@
-import { useState, useEffect } from 'react';
-import { initialVehicles, testimonials, faqData, servicesDetails } from './mockData';
-
-// Import decoupled sections
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import TrustBar from './components/TrustBar';
-import Categories from './components/Categories';
-import Marketplace from './components/Marketplace';
-import WhyChoose from './components/WhyChoose';
-import ImportProcess from './components/ImportProcess';
-import Services from './components/Services';
-import Testimonials from './components/Testimonials';
-import EstimationForm from './components/EstimationForm';
-import FAQ from './components/FAQ';
-import FinalCTA from './components/FinalCTA';
-import Footer from './components/Footer';
-
-// Import interactive overlays
-import VehicleDetailModal from './components/VehicleDetailModal';
-import ServiceDrawerModal from './components/ServiceDrawerModal';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import MainLayout from './layouts/MainLayout';
+import HomePage from './pages/HomePage';
+import VehiclesListPage from './pages/VehiclesListPage';
+import AdvancedSearchPage from './pages/AdvancedSearchPage';
+import FilteredResultsPage from './pages/FilteredResultsPage';
+import VehicleDetailPage from './pages/VehicleDetailPage';
+import VehicleDetailShowroom from './pages/VehicleDetailShowroom';
+import VehicleDetailAdmin from './pages/VehicleDetailAdmin';
+import ShowroomDetailPage from './pages/ShowroomDetailPage';
+import ShowroomVehiclesPage from './pages/ShowroomVehiclesPage';
+import ThankYouPage from './pages/ThankYouPage';
+import ImportFrancePage from './pages/ImportFrancePage';
+import ImportChinaPage from './pages/ImportChinaPage';
+import CertifiedUsedPage from './pages/CertifiedUsedPage';
+import ServicesPage from './pages/ServicesPage';
+import EstimationPage from './pages/EstimationPage';
+import SellVehiclePage from './pages/SellVehiclePage';
+import FinancingPage from './pages/FinancingPage';
+import CompareVehiclesPage from './pages/CompareVehiclesPage';
+import FavoritesPage from './pages/FavoritesPage';
+import ContactPage from './pages/ContactPage';
+import AboutPage from './pages/AboutPage';
+import FAQPage from './pages/FAQPage';
+import TermsPage from './pages/TermsPage';
+import PrivacyPage from './pages/PrivacyPage';
 
 export default function App() {
-  // Navigation & UI state
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [activeImportTab, setActiveImportTab] = useState('france'); // 'france' | 'china'
-  const [favorites, setFavorites] = useState(new Set());
-  
-  // Marketplace Filters state
-  const [searchQuery, setSearchQuery] = useState('');
-  const [brandFilter, setBrandFilter] = useState('');
-  const [fuelFilter, setFuelFilter] = useState('');
-  const [transFilter, setTransFilter] = useState('');
-  const [maxBudget, setMaxBudget] = useState(200000); // 200k Euro
-
-  // Modal / Drawer Interactive states
-  const [selectedVehicle, setSelectedVehicle] = useState(null);
-  const [activeService, setActiveService] = useState(null);
-  const [timelineStep, setTimelineStep] = useState(0);
-  const [activeFaqIndex, setActiveFaqIndex] = useState(null);
-
-  // Form states
-  const [estimationForm, setEstimationForm] = useState({
-    brand: '',
-    model: '',
-    year: '2022',
-    mileage: '',
-    phone: ''
-  });
-  const [estimationLoading, setEstimationLoading] = useState(false);
-  const [estimationResult, setEstimationResult] = useState(null);
-
-  // Testimonial index
-  const [testimonialIndex, setTestimonialIndex] = useState(0);
-
-  // Scroll handler for translucent header
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Auto-slide testimonials
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTestimonialIndex((prev) => (prev + 1) % testimonials.length);
-    }, 6000);
-    return () => clearInterval(interval);
-  }, []);
-
-  // Filter vehicles logic
-  const filteredVehicles = initialVehicles.filter(car => {
-    const matchesSearch = `${car.brand} ${car.model}`.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesBrand = brandFilter ? car.brand.toLowerCase() === brandFilter.toLowerCase() : true;
-    const matchesFuel = fuelFilter ? car.fuel === fuelFilter : true;
-    const matchesTrans = transFilter ? car.transmission === transFilter : true;
-    const matchesBudget = car.price <= maxBudget;
-    return matchesSearch && matchesBrand && matchesFuel && matchesTrans && matchesBudget;
-  });
-
-  const toggleFavorite = (id) => {
-    const updated = new Set(favorites);
-    if (updated.has(id)) {
-      updated.delete(id);
-    } else {
-      updated.add(id);
-    }
-    setFavorites(updated);
-  };
-
-  // Run dynamic calculation for estimation
-  const handleEstimateSubmit = (e) => {
-    e.preventDefault();
-    if (!estimationForm.brand || !estimationForm.model || !estimationForm.mileage || !estimationForm.phone) {
-      alert("Veuillez remplir tous les champs.");
-      return;
-    }
-    
-    setEstimationLoading(true);
-    setEstimationResult(null);
-
-    setTimeout(() => {
-      const yearInt = parseInt(estimationForm.year);
-      const mileageInt = parseInt(estimationForm.mileage) || 0;
-      
-      // Dynamic estimation algorithm (DA basis)
-      let baseVal = 9500000;
-      
-      const brandLower = estimationForm.brand.toLowerCase();
-      if (brandLower.includes('porsche') || brandLower.includes('911') || brandLower.includes('amg')) {
-        baseVal = 25000000;
-      } else if (brandLower.includes('audi') || brandLower.includes('bmw') || brandLower.includes('mercedes')) {
-        baseVal = 16000000;
-      } else if (brandLower.includes('byd') || brandLower.includes('zeekr')) {
-        baseVal = 11000000;
-      }
-
-      const yearsOld = Math.max(0, 2026 - yearInt);
-      let depVal = baseVal - (yearsOld * 900000) - (mileageInt * 25);
-      
-      depVal = Math.max(depVal, 1800000);
-      
-      const minVal = Math.round(depVal * 0.93 / 50000) * 50000;
-      const maxVal = Math.round(depVal * 1.07 / 50000) * 50000;
-
-      setEstimationResult({
-        min: minVal.toLocaleString('fr-FR') + " DA",
-        max: maxVal.toLocaleString('fr-FR') + " DA",
-        car: `${estimationForm.brand} ${estimationForm.model}`
-      });
-      setEstimationLoading(false);
-    }, 2000);
-  };
-
-  const scrollToSection = (id) => {
-    setMobileMenuOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <div className="relative min-h-screen font-sans bg-bg-dark text-white select-none">
-      
-      {/* GLOW DECORATIONS */}
-      <div className="top-1/4 left-1/10 glow-spot-pink" />
-      <div className="top-1/2 right-1/10 glow-spot-pink" />
-      <div className="bottom-1/4 left-1/3 glow-spot-pink" />
+    <Router>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<HomePage />} />
+          
+          {/* Catalogue & Recherche */}
+          <Route path="vehicules" element={<VehiclesListPage />} />
+          <Route path="recherche-avancee" element={<AdvancedSearchPage />} />
+          <Route path="resultats" element={<FilteredResultsPage />} />
+          <Route path="vehicule/:id" element={<VehicleDetailPage />} />
+          
+          {/* Showrooms */}
+          <Route path="showroom/gestion-vehicule/:id" element={<VehicleDetailShowroom />} />
+          <Route path="showroom/:id" element={<ShowroomDetailPage />} />
+          <Route path="showroom/:id/vehicules" element={<ShowroomVehiclesPage />} />
 
-      {/* Header / Navbar Section */}
-      <Navbar
-        scrolled={scrolled}
-        scrollToSection={scrollToSection}
-        favoritesCount={favorites.size}
-        mobileMenuOpen={mobileMenuOpen}
-        setMobileMenuOpen={setMobileMenuOpen}
-      />
-
-      {/* Hero Banner */}
-      <Hero scrollToSection={scrollToSection} />
-
-      {/* Partner Logos & Trust Badges */}
-      <TrustBar />
-
-      {/* Business Core Categories */}
-      <Categories
-        setActiveImportTab={setActiveImportTab}
-        scrollToSection={scrollToSection}
-      />
-
-      {/* Interactive Used Vehicle Catalog */}
-      <Marketplace
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-        brandFilter={brandFilter}
-        setBrandFilter={setBrandFilter}
-        fuelFilter={fuelFilter}
-        setFuelFilter={setFuelFilter}
-        transFilter={transFilter}
-        setTransFilter={setTransFilter}
-        maxBudget={maxBudget}
-        setMaxBudget={setMaxBudget}
-        filteredVehicles={filteredVehicles}
-        favorites={favorites}
-        toggleFavorite={toggleFavorite}
-        setSelectedVehicle={setSelectedVehicle}
-      />
-
-      {/* Why Choose AutoDeal Commitments */}
-      <WhyChoose />
-
-      {/* Guide to China and France Import Operations */}
-      <ImportProcess
-        activeImportTab={activeImportTab}
-        setActiveImportTab={setActiveImportTab}
-        timelineStep={timelineStep}
-        setTimelineStep={setTimelineStep}
-      />
-
-      {/* Maintenance & Workshop Service List */}
-      <Services
-        servicesDetails={servicesDetails}
-        setActiveService={setActiveService}
-      />
-
-      {/* Testimonials Slider */}
-      <Testimonials
-        testimonials={testimonials}
-        testimonialIndex={testimonialIndex}
-        setTestimonialIndex={setTestimonialIndex}
-      />
-
-      {/* Reprise Estimation Engine */}
-      <EstimationForm
-        estimationForm={estimationForm}
-        setEstimationForm={setEstimationForm}
-        estimationLoading={estimationLoading}
-        estimationResult={estimationResult}
-        handleEstimateSubmit={handleEstimateSubmit}
-      />
-
-      {/* Frequently Asked Questions */}
-      <FAQ
-        faqData={faqData}
-        activeFaqIndex={activeFaqIndex}
-        setActiveFaqIndex={setActiveFaqIndex}
-      />
-
-      {/* Bottom Conversion Visual Banner */}
-      <FinalCTA scrollToSection={scrollToSection} />
-
-      {/* Navigation, Contact & Newsletter Footer */}
-      <Footer scrollToSection={scrollToSection} />
-
-      {/* Modals & Overlays */}
-      <VehicleDetailModal
-        selectedVehicle={selectedVehicle}
-        setSelectedVehicle={setSelectedVehicle}
-      />
-      <ServiceDrawerModal
-        activeService={activeService}
-        setActiveService={setActiveService}
-        servicesDetails={servicesDetails}
-      />
-    </div>
+          {/* Admin */}
+          <Route path="admin/vehicule/:id" element={<VehicleDetailAdmin />} />
+          
+          {/* Imports & Occasions */}
+          <Route path="import-france" element={<ImportFrancePage />} />
+          <Route path="import-chine" element={<ImportChinaPage />} />
+          <Route path="occasions-certifiees" element={<CertifiedUsedPage />} />
+          
+          {/* Services & Estimation */}
+          <Route path="services" element={<ServicesPage />} />
+          <Route path="estimation" element={<EstimationPage />} />
+          <Route path="vendre" element={<SellVehiclePage />} />
+          <Route path="financement" element={<FinancingPage />} />
+          
+          {/* Utilitaires */}
+          <Route path="comparaison" element={<CompareVehiclesPage />} />
+          <Route path="favoris" element={<FavoritesPage />} />
+          <Route path="merci" element={<ThankYouPage />} />
+          
+          {/* Pages institutionnelles */}
+          <Route path="contact" element={<ContactPage />} />
+          <Route path="a-propos" element={<AboutPage />} />
+          <Route path="faq" element={<FAQPage />} />
+          <Route path="conditions-generales" element={<TermsPage />} />
+          <Route path="politique-confidentialite" element={<PrivacyPage />} />
+          
+          {/* 404 */}
+          <Route path="*" element={<div className="pt-32 pb-20 text-center"><h1 className="text-3xl font-bold">404 - Page non trouvée</h1></div>} />
+        </Route>
+      </Routes>
+    </Router>
   );
 }

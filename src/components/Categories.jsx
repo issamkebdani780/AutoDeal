@@ -9,7 +9,7 @@ export default function Categories({ setActiveImportTab, scrollToSection }) {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         
         {/* Card 1 */}
-        <div className="group relative h-96 rounded-2xl overflow-hidden border border-glass flex flex-col justify-end p-6 transition-all duration-500 hover:border-neon-pink/40 shadow-2xl">
+        <div className="group relative h-80 sm:h-96 rounded-2xl overflow-hidden border border-glass flex flex-col justify-end p-6 transition-all duration-500 hover:border-neon-pink/40 shadow-2xl">
           <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/france_import.png')" }} />
           <div className="absolute inset-0 bg-gradient-to-t from-bg-dark via-bg-dark/40 to-transparent opacity-90" />
           <div className="relative z-10">
@@ -24,7 +24,7 @@ export default function Categories({ setActiveImportTab, scrollToSection }) {
         </div>
 
         {/* Card 2 */}
-        <div className="group relative h-96 rounded-2xl overflow-hidden border border-glass flex flex-col justify-end p-6 transition-all duration-500 hover:border-neon-pink/40 shadow-2xl">
+        <div className="group relative h-80 sm:h-96 rounded-2xl overflow-hidden border border-glass flex flex-col justify-end p-6 transition-all duration-500 hover:border-neon-pink/40 shadow-2xl">
           <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/china_import.png')" }} />
           <div className="absolute inset-0 bg-gradient-to-t from-bg-dark via-bg-dark/40 to-transparent opacity-90" />
           <div className="relative z-10">
@@ -39,7 +39,7 @@ export default function Categories({ setActiveImportTab, scrollToSection }) {
         </div>
 
         {/* Card 3 */}
-        <div className="group relative h-96 rounded-2xl overflow-hidden border border-glass flex flex-col justify-end p-6 transition-all duration-500 hover:border-neon-pink/40 shadow-2xl">
+        <div className="group relative h-80 sm:h-96 rounded-2xl overflow-hidden border border-glass flex flex-col justify-end p-6 transition-all duration-500 hover:border-neon-pink/40 shadow-2xl">
           <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/certified_used.png')" }} />
           <div className="absolute inset-0 bg-gradient-to-t from-bg-dark via-bg-dark/40 to-transparent opacity-90" />
           <div className="relative z-10">
@@ -54,7 +54,7 @@ export default function Categories({ setActiveImportTab, scrollToSection }) {
         </div>
 
         {/* Card 4 */}
-        <div className="group relative h-96 rounded-2xl overflow-hidden border border-glass flex flex-col justify-end p-6 transition-all duration-500 hover:border-neon-pink/40 shadow-2xl">
+        <div className="group relative h-80 sm:h-96 rounded-2xl overflow-hidden border border-glass flex flex-col justify-end p-6 transition-all duration-500 hover:border-neon-pink/40 shadow-2xl">
           <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/maintenance.png')" }} />
           <div className="absolute inset-0 bg-gradient-to-t from-bg-dark via-bg-dark/40 to-transparent opacity-90" />
           <div className="relative z-10">

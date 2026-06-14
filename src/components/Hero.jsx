@@ -14,7 +14,7 @@ export default function Hero({ scrollToSection }) {
             <span>Importation & Occasion Premium Algérie</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-tight text-white tracking-tight">
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-tight text-white tracking-tight">
             Votre partenaire <br className="hidden sm:inline" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-neon-pink text-glow-strong">
               automobile de confiance
@@ -41,18 +41,18 @@ export default function Hero({ scrollToSection }) {
           </div>
 
           {/* Statistics Counters */}
-          <div className="mt-16 grid grid-cols-3 gap-6 max-w-lg border-t border-white/10 pt-8">
+          <div className="mt-16 grid grid-cols-3 gap-3 sm:gap-6 max-w-lg border-t border-white/10 pt-8">
             <div className="text-center sm:text-left">
-              <p className="text-2xl sm:text-4xl font-extrabold text-white text-glow">500+</p>
-              <p className="text-xs text-white/50 mt-1 uppercase tracking-wider">Véhicules Livrés</p>
+              <p className="text-xl xs:text-2xl sm:text-4xl font-extrabold text-white text-glow">500+</p>
+              <p className="text-[9px] xs:text-xs text-white/50 mt-1 uppercase tracking-wider">Véhicules Livrés</p>
             </div>
-            <div className="text-center sm:text-left border-x border-white/10 px-4">
-              <p className="text-2xl sm:text-4xl font-extrabold text-white text-glow">98%</p>
-              <p className="text-xs text-white/50 mt-1 uppercase tracking-wider">Satisfaction Client</p>
+            <div className="text-center sm:text-left border-x border-white/10 px-2 sm:px-4">
+              <p className="text-xl xs:text-2xl sm:text-4xl font-extrabold text-white text-glow">98%</p>
+              <p className="text-[9px] xs:text-xs text-white/50 mt-1 uppercase tracking-wider">Satisfaction Client</p>
             </div>
             <div className="text-center sm:text-left">
-              <p className="text-2xl sm:text-4xl font-extrabold text-white text-glow">24h</p>
-              <p className="text-xs text-white/50 mt-1 uppercase tracking-wider">Support Client</p>
+              <p className="text-xl xs:text-2xl sm:text-4xl font-extrabold text-white text-glow">24h</p>
+              <p className="text-[9px] xs:text-xs text-white/50 mt-1 uppercase tracking-wider">Support Client</p>
             </div>
           </div>
 
